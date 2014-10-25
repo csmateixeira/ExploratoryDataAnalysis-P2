@@ -10,7 +10,7 @@ if(!file.exists("data/NEI_data.zip")){
 NEI <- readRDS("data/summarySCC_PM25.rds")
 #SCC <- readRDS("data/Source_Classification_Code.rds")
 
-png(filename = "plot1.png", bg = "transparent")
+png(filename = "plot1.png")
 
 with(
     NEI %>% 
