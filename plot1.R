@@ -1,6 +1,5 @@
 library(plyr)
 library(dplyr)
-library(reshape2)
 
 if(!file.exists("data/NEI_data.zip")){
     download.file(url = "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip", destfile = "data/NEI_data.zip", method = "curl")
@@ -8,7 +7,6 @@ if(!file.exists("data/NEI_data.zip")){
 }
 
 NEI <- readRDS("data/summarySCC_PM25.rds")
-#SCC <- readRDS("data/Source_Classification_Code.rds")
 
 png(filename = "plot1.png")
 
@@ -16,7 +14,7 @@ with(
     NEI %>% 
         group_by(year) %>% 
         summarize(total = sum(Emissions)),        
-    plot(year, total, type = "l", xlab = "Year", ylab = "Total PM2.5 (All Sources)")
+    plot(year, total, type = "l", xlab = "Year", ylab = "PM2.5", main = "Total PM2.5 Emissions In The US (All Sources)")
 )
 
 dev.off()
