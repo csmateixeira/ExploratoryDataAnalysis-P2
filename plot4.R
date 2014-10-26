@@ -18,8 +18,6 @@ SCC <- readRDS("data/Source_Classification_Code.rds")
 # - We only care about coal combustion related sourcesso filtering SCC based on EI.Sector that contains "Coal"
 # - Merged NEI with SCC - only relevant "Coal" related rows are merged
 # - Group NEI by year since we want the data summarized according to year
-# - Calculate the total emissions for each year and put them into a "total" column. Using the total emissions here to compare emissions on a yearly basis.
-# - Transforming the total dimension to Hundreds of Thousands of Tons instead of Tons makes for a more readable graphic and displays the same information
 Summary <- 
     NEI %>% 
         merge(SCC[grepl("Coal", SCC$EI.Sector, perl = TRUE), c("SCC", "EI.Sector")], by = "SCC") %>%
